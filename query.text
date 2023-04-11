@@ -1,0 +1,13 @@
+CREATE TABLE login(userId VARCHAR(20) NOT NULL,password VARCHAR(20),PRIMARY KEY(userId));
+ 
+CREATE TABLE DesignationMaster(DesignationId int ,Designation VARCHAR(20),PRIMARY KEY(DesignationId));
+
+
+CREATE TABLE EmployeeMaster(EmployeeId int,firstName VARCHAR(20),lastName VARCHAR(20), DateOfJoining date, Salary numeric(18,0),  DesignationId int , FOREIGN KEY (DesignationId) REFERENCES DesignationMaster(DesignationId)  ,PRIMARY KEY(EmployeeId));
+
+
+
+ SELECT EmployeeMaster.*, DesignationMaster.Designation FROM DesignationMaster INNER JOIN EmployeeMaster ON (DesignationMaster.DesignationId=EmployeeMaster.DesignationId);
+
+
+ ALTER TABLE EmployeeMaster  MODIFY COLUMN  EmployeeId  INT auto_increment;
